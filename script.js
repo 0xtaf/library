@@ -1,17 +1,36 @@
+let myLibrary = [];
+title = "anan";
+author = "baban";
+pages = 299;
+isRead = false;
+
+
 function Book(title, author, pages, isRead){
 	this.title = title;
 	this.author = author;
 	this.pages = pages;
 	this.isRead = isRead;
-	if (isRead == true){
-		title.info = function(){
-		return (title+" by "+author+", "+pages+" pages, "+ "is read");
-		}
-		console.log(title.info());
-	} else {
-		title.info = function(){
-		return (title+" by "+author+", "+pages+" pages, "+ "not read yet");
-		}
-		console.log(title.info());
-	}
 }
+
+Book.prototype.info = function() {
+	return (this.title+", by "+this.author+". "+this.pages+", is read");
+}
+
+
+
+function addBookToLibrary(title,author,pages,isRead) {
+	myLibrary.push(new Book(this.title, this.author, this.pages, this.isRead));	
+	myLibrary.push(new Book("puslu kıtalar atlası", "ihsan oktay anar", 305, true));
+	myLibrary.push(new Book("amat kitabı", "ihsan oktay gene", 258, false));
+	myLibrary.push(new Book("montaigne denemeler", "montaigne adı üstünde", 452, true));
+}
+
+
+addBookToLibrary();
+
+
+
+for (let i = 0; i<myLibrary.length;i++){
+    console.log(myLibrary[i].info());
+}
+
