@@ -1,3 +1,8 @@
-.headers *{
-    display: inline-block;
+.headers {
+    display: inline-table;
+}
+
+.title {
+    display: inline-table;
+    margin: 0px 140px;
 }

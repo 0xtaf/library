@@ -1,3 +1,6 @@
+const items = document.querySelector('list');
+
+
 let myLibrary = [];
 title = "anan";
 author = "baban";
@@ -34,3 +37,6 @@ for (let i = 0; i<myLibrary.length;i++){
     console.log(myLibrary[i].info());
 }
 
+function render(){
+	//list the array into html
+}
