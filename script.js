@@ -30,13 +30,17 @@ function addBookToLibrary(title,author,pages,isRead) {
 
 
 addBookToLibrary();
+render();
 
 
 
-for (let i = 0; i<myLibrary.length;i++){
-    console.log(myLibrary[i].info());
-}
 
 function render(){
 	//list the array into html
+	for (let i = 0; i<myLibrary.length;i++){
+		const items = document.createElement('p');
+		items.innerHTML = myLibrary[i].info();
+		document.body.appendChild(items);
+	}
 }
+
