@@ -2,13 +2,20 @@
     display: inline-table;
 }
 
+
+
 .title1, .title2, .title3, .title4 {
     display: inline-table;
-    margin: 0px 140px;
+    font-weight: bold;
 }
-
+.title1 {
+    margin: 0px 172px;
+}
+.title2 {
+    margin: 0px 75px;
+}
 .title3 {
-    margin: 0px 105px;
+    margin: 0px 75px;
 }
 
 .title4 {
@@ -18,13 +25,24 @@
 ul {
     display: inline-table;
     margin: 0px 140px;
+    margin: 20px 15px;
+    text-align: center;
+}
+
+ul.pagesList {
+    margin: 20px 45px;
+}
+
+ul.statusList {
     margin: 20px 70px;
 }
 
 li {
     margin-top: 20px;
     list-style: none;
+    word-wrap: normal;
 }
+
 
 .newBookButton {
     background-color: #555;
