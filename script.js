@@ -1,11 +1,11 @@
-const items = document.querySelector('list');
+const titleList = document.querySelector('.titleList');
+const authorList = document.querySelector('.authorList');
+const pagesList = document.querySelector('.pagesList');
+const statusList = document.querySelector('.statusList');
+const newBookViewForm = document.querySelector('.newBookViewForm');
+const newBookButton = document.querySelector('.newBookButton');
+newBookViewForm.style.display = "none";
 
-
-let myLibrary = [];
-title = "anan";
-author = "baban";
-pages = 299;
-isRead = false;
 
 
 function Book(title, author, pages, isRead){
@@ -15,21 +15,26 @@ function Book(title, author, pages, isRead){
 	this.isRead = isRead;
 }
 
+
 Book.prototype.info = function() {
 	return (this.title+", by "+this.author+". "+this.pages+", is read");
 }
 
 
 
-function addBookToLibrary(title,author,pages,isRead) {
-	myLibrary.push(new Book(this.title, this.author, this.pages, this.isRead));	
-	myLibrary.push(new Book("puslu kıtalar atlası", "ihsan oktay anar", 305, true));
-	myLibrary.push(new Book("amat kitabı", "ihsan oktay gene", 258, false));
-	myLibrary.push(new Book("montaigne denemeler", "montaigne adı üstünde", 452, true));
-}
+let myLibrary = [];
 
 
-addBookToLibrary();
+
+newBookButton.addEventListener('click', newBook);
+
+
+
+
+
+
+
+
 render();
 
 
@@ -38,9 +43,34 @@ render();
 function render(){
 	//list the array into html
 	for (let i = 0; i<myLibrary.length;i++){
-		const items = document.createElement('p');
-		items.innerHTML = myLibrary[i].info();
-		document.body.appendChild(items);
+		const titleItem = document.createElement('li');		
+		titleItem.innerHTML = myLibrary[i]["title"];
+		titleList.appendChild(titleItem);
+
+		const authorItem = document.createElement('li');	
+		authorItem.innerHTML = myLibrary[i]["author"];
+		authorList.appendChild(authorItem);
+
+		const pagesItem = document.createElement('li');	
+		pagesItem.innerHTML = myLibrary[i]["pages"];
+		pagesList.appendChild(pagesItem);
+
+		const statusItem = document.createElement('li');	
+		statusItem.innerHTML = myLibrary[i]["isRead"];
+		statusList.appendChild(statusItem);
 	}
 }
 
+
+function newBook (){
+	newBookViewForm.style.display = "block";
+}
+function closeForm() {
+	newBookViewForm.style.display = "none";
+}
+
+
+function submitForm() {
+	myLibrary.push(new Book(this.title, this.author, this.pages, this.isRead));	
+	render();
+}

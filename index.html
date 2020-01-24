@@ -12,16 +12,38 @@
     <h1>Library</h1>
   </div>
   <div class="addBooks">
-    <h2>Add Books</h2>
+    <button class="newBookButton">Add Book</button>
     <div class="inputs"></div>
   </div>
+
   <div class="container"></div>
+    <div class="newBookView"></div>
+      <form class="newBookViewForm">
+        <label for="title"><b>Book Title</b></label>
+        <input type="text" placeholder="Enter the title" name="title" required="">
+
+        <label for="author"><b>Book Author</b></label>
+        <input type="text" placeholder="Enter the author" name="author" required="">
+
+        <label for="pages"><b>Book Page</b></label>
+        <input type="text" placeholder="Enter the page" name="pages" required="">
+
+        <label>
+        <input type="checkbox" checked="checked" name="isRead"> I read the book </label>
+
+        <button type="submit" class="addButton" onclick="submitForm()">Add the Book</button>
+        <button type="submit" class="cancelButton" onclick="closeForm()">Cancel</button>
+      </form>
     <div class="headers"></div>
-      <div class="title">Title</div>
-      <div class="title">Author</div>
-      <div class="title">Pages</div>
-      <div class="title">Status</div>
-    <!-- <ul class="booklist"></ul>   -->
+    <div class="title"></div>
+      <div class="title1">Title</div>       
+      <div class="title2">Author</div>       
+      <div class="title3">Pages</div>      
+      <div class="title4">Status</div>
+    <ul class="titleList"></ul>
+    <ul class="authorList"></ul>
+    <ul class="pagesList"></ul>
+    <ul class="statusList"></ul>
 
     <script src="script.js"></script>
 </html>

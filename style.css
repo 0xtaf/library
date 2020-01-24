@@ -2,7 +2,93 @@
     display: inline-table;
 }
 
-.title {
+.title1, .title2, .title3, .title4 {
     display: inline-table;
     margin: 0px 140px;
+}
+
+.title3 {
+    margin: 0px 105px;
+}
+
+.title4 {
+    margin: 0px 60px;
+}
+
+ul {
+    display: inline-table;
+    margin: 0px 140px;
+    margin: 20px 70px;
+}
+
+li {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.newBookButton {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+
+.newBookView {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+}
+
+.newBookViewForm {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+.newBookViewForm input[type=text]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+}
+
+.newBookViewForm input[type=text]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+.newBookViewForm .addButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+
+.newBookViewForm .cancelButton {
+    background-color: red;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+}
+  
+.newBookViewForm .addButton:hover, .cancelButton:hover, .newBookButton:hover {
+    opacity: 1;
 }
