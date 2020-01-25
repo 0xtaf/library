@@ -2,11 +2,13 @@ const titleList = document.querySelector('.titleList');
 const authorList = document.querySelector('.authorList');
 const pagesList = document.querySelector('.pagesList');
 const statusList = document.querySelector('.statusList');
+const removeList = document.querySelector('.removeList');
 const newBookViewForm = document.querySelector('.newBookViewForm');
 const newBookButton = document.querySelector('.newBookButton');
-const headers = document.querySelector('.headers');
-newBookViewForm.style.display = "none";
+const table = document.getElementById("table");
+const contentTable = document.getElementById("libContent");
 
+newBookViewForm.style.display = "none";
 
 
 function Book(title, author, pages, isRead){
@@ -23,104 +25,99 @@ Book.prototype.info = function() {
 
 
 
-let myLibrary = [{title: "yüzük", author: "ben", pages: "342", isRead: "on"},{title: "the lord of the rings the return of the king", author: "jk rowlingle ben yazdim", pages: "1098", isRead: "on"},{title: "bu da ucuncu kitap", author: "montaigne yazmış", pages: "200", isRead: "on"}];
-
+let myLibrary = [];
 
 
 newBookButton.addEventListener('click', newBook);
 
 
 
-
-
-
-
-
-renderfirst();
-
-
-
-
-function renderfirst(){
-	//list the array into html
-	for (let i = 0; i<myLibrary.length;i++){
-		const titleItem = document.createElement('li');		
-		titleItem.innerHTML = myLibrary[i]["title"];
-		titleList.appendChild(titleItem);
-
-		const authorItem = document.createElement('li');	
-		authorItem.innerHTML = myLibrary[i]["author"];
-		authorList.appendChild(authorItem);
-
-		const pagesItem = document.createElement('li');	
-		pagesItem.innerHTML = myLibrary[i]["pages"];
-		pagesList.appendChild(pagesItem);
-
-		const statusItem = document.createElement('li');	
-		statusItem.innerHTML = myLibrary[i]["isRead"];
-		statusList.appendChild(statusItem);
-		if (statusItem.innerHTML == "on"){
-			statusItem.textContent = "read";
-		} else if (statusItem.innerHTML == "off"){
-			statusItem.textContent = "unread";
-		}
-	}
-}
-function renderlast(){
-	//list the array into html
+let indexNo = -1;
+function render(){
+		indexNo += 1;
 		let length = myLibrary.length - 1;
 
-		const titleItem = document.createElement('li');		
-		titleItem.innerHTML = myLibrary[length]["title"];
-		titleList.appendChild(titleItem);
+		contentTable.innerHTML="";
+		for (let i = length; i >= 0; i--){
+			let row = contentTable.insertRow(0);
+			let cell1 = row.insertCell(0);
+			let cell2 = row.insertCell(1);
+			let cell3 = row.insertCell(2);
+			let cell4 = row.insertCell(3);
+			let cell5 = row.insertCell(4);
+			let cell6 = row.insertCell(5);
 
-		const authorItem = document.createElement('li');	
-		authorItem.innerHTML = myLibrary[length]["author"];
-		authorList.appendChild(authorItem);
-
-		const pagesItem = document.createElement('li');	
-		pagesItem.innerHTML = myLibrary[length]["pages"];
-		pagesList.appendChild(pagesItem);
-
-		const statusItem = document.createElement('li');	
-		statusItem.innerHTML = myLibrary[length]["isRead"];
-		console.log(statusItem);
-		statusList.appendChild(statusItem);
-		if (statusItem.innerHTML == "on"){
-			statusItem.textContent = "read";
-		} else if (statusItem.innerHTML == "off"){
-			statusItem.textContent = "unread";
+			cell1.innerHTML = myLibrary[i].title;
+			cell2.innerHTML = myLibrary[i].author;
+			cell3.innerHTML = myLibrary[i].pages;
+			cell4.innerHTML = `<button class="button">${myLibrary[i].read}</button>`;
+			cell4.id = "toggle"; //to toggle read and unread.
+			cell5.innerHTML = i + 1;
+			cell6.id = "remove";//add remove id to select it if you want to remove the book.
+			//table.appendChild( row );
+			cell6.innerHTML = `<button class="button">Delete</button>`;
 		}
+
+
+}
+		
+		
+		
+		
+		
+		
+		// if (statusItem.innerHTML == "on"){
+		// 	statusItem.textContent = "read";
+		// } else if (statusItem.innerHTML == "off"){
+		// 	statusItem.textContent = "unread";
+		// }
+
+		// const removeItems = document.createElement('button');
+		// removeItems.textContent = "Remove";
+		// removeItems.dataset.indexNumber = indexNo;
+		// removeItems.classList.add('removeButton');
+		// removeList.appendChild(removeItems);
+		// removeItems.addEventListener('click', popItem);
 	
+
+
+
+
+function popItem() {
+	console.log(this.dataset.indexNumber);
 }
 
+
 function newBook (){
-	headers.style.display = "none";
+	table.style.display = "none";
+	contentTable.style.display = "none";
 	newBookViewForm.style.display = "block";
 }
 function closeForm() {
 	event.preventDefault();
 	newBookViewForm.style.display = "none";
-	headers.style.display = "";
+	table.style.display = "";
+	contentTable.style.display = "";
 }
 
 
 function submitForm() {
 	event.preventDefault();
-	a = document.querySelector('[name="title"]').value;
-	a.className = "titleList";
-	b = document.querySelector('[name="author"]').value;
-	b.className = "authorList";
-	c = document.querySelector('[name="pages"]').value;
-	c.className = "pagesList";
+	let title = document.querySelector('[name="title"]').value;
+	title.className = "titleList";
+	let author = document.querySelector('[name="author"]').value;
+	author.className = "authorList";
+	let pages = document.querySelector('[name="pages"]').value;
+	pages.className = "pagesList";
 	if (document.querySelector('[name="isRead"]').checked == true){
-		d = "on";
+		let status = "on";
 	} else {
-		d = "off";
+		let status = "off";
 	}
-	d.className = "statusList";
-	myLibrary.push(new Book(a,b,c,d));	
-	headers.style.display = "";
+	status.className = "statusList";
+	myLibrary.push(new Book(title,author,pages,status));	
+	table.style.display = "";
+	contentTable.style.display = "";
 	newBookViewForm.style.display = "none";
-	renderlast();	
+	render();	
 }

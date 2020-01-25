@@ -34,18 +34,17 @@
         <button type="submit" class="addButton" onclick="submitForm()">Add the Book</button>
         <button type="submit" class="cancelButton" onclick="closeForm()">Cancel</button>
       </form>
-    <div class="headers">
-      <div class="title"></div>
-        <div class="title1">Title</div>       
-        <div class="title2">Author</div>       
-        <div class="title3">Pages</div>      
-        <div class="title4">Status</div>
+    <table id="table">
+      <tr class="title"></tr>
+        <th class="title1">Title</th>       
+        <th class="title2">Author</th>       
+        <th class="title3">Pages</th>      
+        <th class="title4">Status</th>
         <br><br>
-        <ul class="titleList"></ul>
-        <ul class="authorList"></ul>
-        <ul class="pagesList"></ul>
-        <ul class="statusList"></ul>
-    </div>
+      <tbody id="libContent">
+
+      </tbody>
+    </table>
 
     <script src="script.js"></script>
   </body>
