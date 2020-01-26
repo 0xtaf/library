@@ -1,4 +1,16 @@
-let myLibrary = [];
+
+const titleList = document.querySelector('.titleList');
+const authorList = document.querySelector('.authorList');
+const pagesList = document.querySelector('.pagesList');
+const statusList = document.querySelector('.statusList');
+const removeList = document.querySelector('.removeList');
+const newBookViewForm = document.querySelector('.newBookViewForm');
+const newBookButton = document.querySelector('.newBookButton');
+const table = document.getElementById("table");
+const contentTable = document.getElementById("libContent");
+
+newBookViewForm.style.display = "none";
+let myLibrary;
 
 function storageAvailable(type) {
     var storage;
@@ -34,24 +46,14 @@ Storage.prototype.getObj = function(key) {
 
 if (storageAvailable('localStorage')) {
     if(localStorage.length != 0){
-   		myLibrary = localStorage.getObj("library");
+		   myLibrary = localStorage.getObj("library");
+		   render();
 	}
 }else {
     alert("Local Storage is not available on this browser.");
 }
 
-const titleList = document.querySelector('.titleList');
-const authorList = document.querySelector('.authorList');
-const pagesList = document.querySelector('.pagesList');
-const statusList = document.querySelector('.statusList');
-const removeList = document.querySelector('.removeList');
-const newBookViewForm = document.querySelector('.newBookViewForm');
-const newBookButton = document.querySelector('.newBookButton');
-const table = document.getElementById("table");
-const contentTable = document.getElementById("libContent");
 
-newBookViewForm.style.display = "none";
-render();
 
 
 function Book(title, author, pages, isRead){
