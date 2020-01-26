@@ -1,3 +1,45 @@
+let myLibrary;
+
+function storageAvailable(type) {
+    var storage;
+    try {
+        storage = window[type];
+        var x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            (storage && storage.length !== 0);
+    }
+}
+//parses array into json format and back when called.
+Storage.prototype.setObj = function(key, obj) {
+    return this.setItem(key, JSON.stringify(obj))
+}
+Storage.prototype.getObj = function(key) {
+    return JSON.parse(this.getItem(key))
+}
+
+if (storageAvailable('localStorage')) {
+    if(localStorage.length != 0){
+   		myLibrary = localStorage.getObj("library");
+	}
+}else {
+    alert("Local Storage is not available on this browser.");
+}
+
 const titleList = document.querySelector('.titleList');
 const authorList = document.querySelector('.authorList');
 const pagesList = document.querySelector('.pagesList');
@@ -9,6 +51,7 @@ const table = document.getElementById("table");
 const contentTable = document.getElementById("libContent");
 
 newBookViewForm.style.display = "none";
+render();
 
 
 function Book(title, author, pages, isRead){
@@ -30,7 +73,7 @@ Book.prototype.info = function() {
 
 
 
-let myLibrary = [];
+// let myLibrary = [];
 
 
 newBookButton.addEventListener('click', newBook);
@@ -68,6 +111,10 @@ function render(){
 		toggleButtons.forEach(item => {
 			item.addEventListener('click', toggle);
 		});
+
+		if (storageAvailable('localStorage')) {
+			localStorage.setObj("library", myLibrary);
+		}
 
 
 }
