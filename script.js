@@ -10,7 +10,7 @@ const table = document.getElementById("table");
 const contentTable = document.getElementById("libContent");
 
 newBookViewForm.style.display = "none";
-let myLibrary;
+let myLibrary = [];
 
 function storageAvailable(type) {
     var storage;
@@ -73,9 +73,6 @@ Book.prototype.info = function() {
 	return (this.title+", by "+this.author+". "+this.pages+", is read");
 }
 
-
-
-// let myLibrary = [];
 
 
 newBookButton.addEventListener('click', newBook);
