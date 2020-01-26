@@ -1,4 +1,4 @@
-let myLibrary;
+let myLibrary = [];
 
 function storageAvailable(type) {
     var storage;
