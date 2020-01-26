@@ -146,6 +146,10 @@ function newBook (){
 	table.style.display = "none";
 	contentTable.style.display = "none";
 	newBookViewForm.style.display = "block";
+	document.querySelector('[name="title"]').value = "";
+	document.querySelector('[name="author"]').value = "";
+	document.querySelector('[name="pages"]').value = "";
+	status = document.querySelector('[name="isRead"]').checked = true;
 }
 function closeForm() {
 	event.preventDefault();
