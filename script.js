@@ -80,7 +80,7 @@ function remove(){
 
 
 function toggle(){
-    console.log(myLibrary[this.parentNode.dataset.index]);
+    
     if(myLibrary[this.parentNode.dataset.index].isRead == "Read"){
         myLibrary[this.parentNode.dataset.index].isRead = "Unread"; 
     }else if(myLibrary[this.parentNode.dataset.index].isRead == "Unread"){
@@ -91,24 +91,6 @@ function toggle(){
 		
 		
 		
-		
-		// if (statusItem.innerHTML == "on"){
-		// 	statusItem.textContent = "read";
-		// } else if (statusItem.innerHTML == "off"){
-		// 	statusItem.textContent = "unread";
-		// }
-
-		// const removeItems = document.createElement('button');
-		// removeItems.textContent = "Remove";
-		// removeItems.dataset.indexNumber = indexNo;
-		// removeItems.classList.add('removeButton');
-		// removeList.appendChild(removeItems);
-		// removeItems.addEventListener('click', popItem);
-	
-
-
-
-
 function popItem() {
 	console.log(this.dataset.indexNumber);
 }
